@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  edusphere-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: edusphere-ai-container
+    ports:
+      - "80:80"
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=sqlite:///./edusphere.db
+      - SECRET_KEY=edusphere_super_secret_jwt_key_2026_btech_platform
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+    restart: always
